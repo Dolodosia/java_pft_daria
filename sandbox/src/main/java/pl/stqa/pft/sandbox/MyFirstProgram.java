@@ -8,8 +8,8 @@ public class MyFirstProgram
 		hello("user");
 		hello("Alexei");
 
-		double l = 5;
-      System.out.println("powierzchnia kwadratu o boku " + l + " = " + area(l));
+		Square s = new Square(5);
+      System.out.println("powierzchnia kwadratu o boku " + s.l + " = " + s.area());
 
       double a = 4;
       double b = 6;
