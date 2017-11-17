@@ -20,7 +20,7 @@ public class ApplicationManager {
       }
   }
 
-  public void init() {
+  protected void init() {
     //wd = new FirefoxDriver();
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -28,7 +28,7 @@ public class ApplicationManager {
     login("admin", "secret");
   }
 
-  public void login(String username, String password) {
+  private void login(String username, String password) {
       wd.findElement(By.name("user")).click();
       wd.findElement(By.name("user")).clear();
       wd.findElement(By.name("user")).sendKeys(username);
@@ -38,15 +38,15 @@ public class ApplicationManager {
       wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
-  public void returnToGroupPage() {
+  protected void returnToGroupPage() {
       wd.findElement(By.linkText("group page")).click();
   }
 
-  public void submitGroupCreation() {
+  protected void submitGroupCreation() {
       wd.findElement(By.name("submit")).click();
   }
 
-  public void fillGroupForm(GroupData groupData) {
+  protected void fillGroupForm(GroupData groupData) {
       wd.findElement(By.name("group_name")).click();
       wd.findElement(By.name("group_name")).clear();
       wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
@@ -58,23 +58,23 @@ public class ApplicationManager {
       wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
   }
 
-  public void initGroupCreation() {
+  protected void initGroupCreation() {
       wd.findElement(By.name("new")).click();
   }
 
-  public void goToGroupPage() {
+  protected void goToGroupPage() {
       wd.findElement(By.linkText("groups")).click();
   }
 
-  public void stop() {
+  protected void stop() {
     wd.quit();
   }
 
-  public void deleteSelectedGroup() {
+  protected void deleteSelectedGroup() {
       wd.findElement(By.name("delete")).click();
   }
 
-  public void selectGroup() {
+  protected void selectGroup() {
       if (!wd.findElement(By.name("selected[]")).isSelected()) {
           wd.findElement(By.name("selected[]")).click();
       }
