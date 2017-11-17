@@ -25,7 +25,7 @@ public class GroupDeletionTests {
     }
     
     @Test
-    public void GroupDeletionTests() {
+    public void testGroupDeletion() {
         wd.get("http://localhost/addressbook/addressbook/group.php");
         wd.findElement(By.id("LoginForm")).click();
         wd.findElement(By.name("user")).click();
