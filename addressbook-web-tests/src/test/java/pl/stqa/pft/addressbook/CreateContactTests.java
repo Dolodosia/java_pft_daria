@@ -25,7 +25,7 @@ public class CreateContactTests {
     }
     
     @Test
-    public void CreateContactTests() {
+    public void testCreateContact() {
         wd.get("http://localhost/addressbook/addressbook/group.php");
         wd.findElement(By.name("user")).click();
         wd.findElement(By.name("user")).clear();
