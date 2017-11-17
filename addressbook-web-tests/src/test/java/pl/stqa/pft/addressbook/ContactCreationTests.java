@@ -39,7 +39,7 @@ public class ContactCreationTests {
 
 
     goToNewContact();
-    fillInNewContactForm(new ContactGroupData("Tester", "Refactor", "666000777", "refactor@gmail.com"));
+    fillInNewContactForm(new ContactGroupData("Testerka", "Revertuje", "666000777", "refactor@gmail.com"));
   }
 
   private void fillInNewContactForm(ContactGroupData contactGroupData) {
