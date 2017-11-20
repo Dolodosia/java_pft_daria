@@ -20,12 +20,10 @@ public class DeleteContactTest extends TestBase {
     @Test
     public void testDeleteContact() {
 
-        if (!wd.findElement(By.id("6")).isSelected()) {
-            wd.findElement(By.id("6")).click();
-        }
-        wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+        clickSelectedContactToDelete();
+        deleteContact();
     }
-    
 
-    }
+
+}
 
