@@ -8,16 +8,7 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 
-public class CreateContactTests {
-    FirefoxDriver wd;
-    
-    @BeforeMethod
-    public void setUp() throws Exception {
-        //wd = new FirefoxDriver();
-        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
-        login1("admin", "secret");
-
-    }
+public class CreateContactTests extends TestBase {
     
     @Test
     public void testCreateContact() {
@@ -50,28 +41,6 @@ public class CreateContactTests {
         wd.findElement(By.linkText("add new")).click();
     }
 
-    private void login1(String username1, String password1) {
-        wd.get("http://localhost/addressbook/addressbook/group.php");
-        wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys(username1);
-        wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys(password1);
-        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+
     }
 
-    @AfterMethod
-    public void tearDown() {
-        wd.quit();
-    }
-    
-    public static boolean isAlertPresent(FirefoxDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-}

@@ -15,14 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 import static org.openqa.selenium.OutputType.*;
 
-public class DeleteContactTest {
-    FirefoxDriver wd;
-    
-    @BeforeMethod
-    public void setUp() throws Exception {
-        //wd = new FirefoxDriver();
-        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
-    }
+public class DeleteContactTest extends TestBase {
     
     @Test
     public void testDeleteContact() {
@@ -40,17 +33,6 @@ public class DeleteContactTest {
         wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
     }
     
-    @AfterMethod
-    public void tearDown() {
-        wd.quit();
+
     }
-    
-    public static boolean isAlertPresent(FirefoxDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-}
+

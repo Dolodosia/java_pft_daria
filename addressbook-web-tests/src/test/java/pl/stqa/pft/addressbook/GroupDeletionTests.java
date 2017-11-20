@@ -15,14 +15,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 import static org.openqa.selenium.OutputType.*;
 
-public class GroupDeletionTests {
-    FirefoxDriver wd;
+public class GroupDeletionTests extends TestBase {
+
     
-    @BeforeMethod
-    public void setUp() throws Exception {
-        //wd = new FirefoxDriver();
-        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
-    }
+
     
     @Test
     public void testGroupDeletion() {
@@ -44,17 +40,6 @@ public class GroupDeletionTests {
         wd.findElement(By.linkText("group page")).click();
     }
     
-    @AfterMethod
-    public void tearDown() {
-        wd.quit();
+
     }
-    
-    public static boolean isAlertPresent(FirefoxDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-}
+
