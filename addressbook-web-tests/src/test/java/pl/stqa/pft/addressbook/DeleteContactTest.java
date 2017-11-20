@@ -7,11 +7,11 @@ public class DeleteContactTest extends TestBase {
     @Test
     public void testDeleteContact() {
 
-        clickSelectedContactToDelete();
+        app.clickSelectedContactToDelete();
         //exp
         //selectContact();
 
-        deleteContact();
+        app.deleteContact();
 
         //exp
         //deleteContact1();
