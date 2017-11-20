@@ -103,12 +103,29 @@ public class TestBase {
       wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
   }
 
+
   protected void clickSelectedContactToDelete() {
       if (!wd.findElement(By.id("6")).isSelected()) {
           wd.findElement(By.id("6")).click();
       }
   }
-//wersja exp
+
+
+  /*exp
+  public void selectContact() {
+    wd.click(By.id("6"));
+     }
+     */
+
+     /*exp
+     public void deleteContact1() {
+      wd.click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+        }
+        */
+
+
+
+  //wersja exp
   protected void deleteSelectedGroup() {
     wd.findElement(By.name("delete")).click();
   }

@@ -12,11 +12,11 @@ public class GroupDeletionTests extends TestBase {
 
         goToGroupPage();
         //selectdeletedgroup();
-        returnToGroupPage();
 
         //tak powinno byc...?
         selectGroup();
         deleteSelectedGroup();
+        returnToGroupPage();
 
     }
 

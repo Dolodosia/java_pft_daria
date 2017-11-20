@@ -8,7 +8,13 @@ public class DeleteContactTest extends TestBase {
     public void testDeleteContact() {
 
         clickSelectedContactToDelete();
+        //exp
+        //selectContact();
+
         deleteContact();
+
+        //exp
+        //deleteContact1();
     }
 
 
