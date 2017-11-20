@@ -19,14 +19,7 @@ public class DeleteContactTest extends TestBase {
     
     @Test
     public void testDeleteContact() {
-        wd.get("http://localhost/addressbook/addressbook/");
-        wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys("admin");
-        wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys("secret");
-        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+
         if (!wd.findElement(By.id("6")).isSelected()) {
             wd.findElement(By.id("6")).click();
         }

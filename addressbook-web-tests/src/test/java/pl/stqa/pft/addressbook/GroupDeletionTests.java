@@ -22,24 +22,12 @@ public class GroupDeletionTests extends TestBase {
     
     @Test
     public void testGroupDeletion() {
-        wd.get("http://localhost/addressbook/addressbook/group.php");
-        wd.findElement(By.id("LoginForm")).click();
-        wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys("admin");
-        wd.findElement(By.id("LoginForm")).click();
-        wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys("secret");
-        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-        wd.findElement(By.linkText("groups")).click();
-        if (!wd.findElement(By.name("selected[]")).isSelected()) {
-            wd.findElement(By.name("selected[]")).click();
-        }
-        wd.findElement(By.xpath("//div[@id='content']/form/input[5]")).click();
-        wd.findElement(By.linkText("group page")).click();
-    }
-    
 
+        goToGroupPage();
+        selectdeletedgroup();
+        returnToGroupPage();
     }
+
+
+}
 
