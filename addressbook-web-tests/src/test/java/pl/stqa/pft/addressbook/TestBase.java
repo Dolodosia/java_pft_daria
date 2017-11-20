@@ -73,7 +73,7 @@ public class TestBase {
   }
 
   protected void selectdeletedgroup() {
-      wd.findElement(By.xpath("//div[@id='content']/form/input[5]")).click();
+      wd.findElement(By.linkText("groups")).click();
   }
 
   protected void newContactEnd() {
@@ -107,5 +107,17 @@ public class TestBase {
       if (!wd.findElement(By.id("6")).isSelected()) {
           wd.findElement(By.id("6")).click();
       }
+  }
+//wersja exp
+  protected void deleteSelectedGroup() {
+    wd.findElement(By.name("delete")).click();
+  }
+//wersja exp
+  protected void selectGroup() {
+    if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
+      wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).click();
+
+
+    }
   }
 }

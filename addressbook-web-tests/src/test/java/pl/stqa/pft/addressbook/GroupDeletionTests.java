@@ -11,8 +11,13 @@ public class GroupDeletionTests extends TestBase {
     public void testGroupDeletion() {
 
         goToGroupPage();
-        selectdeletedgroup();
+        //selectdeletedgroup();
         returnToGroupPage();
+
+        //tak powinno byc...?
+        selectGroup();
+        deleteSelectedGroup();
+
     }
 
 
