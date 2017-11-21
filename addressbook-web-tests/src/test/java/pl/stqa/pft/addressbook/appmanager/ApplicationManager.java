@@ -8,7 +8,11 @@ import pl.stqa.pft.addressbook.model.ContactData;
 
 public class ApplicationManager {
 
-  private final GroupHelper groupHelper = new GroupHelper();
+  FirefoxDriver wd;
+
+  private SessionHelper sessionHelper;
+  private  NavigationHelper navigationHelper;
+  private GroupHelper groupHelper;
 
   public static boolean isAlertPresent(FirefoxDriver wd) {
       try {
@@ -21,69 +25,61 @@ public class ApplicationManager {
 
   public void init() {
     //wd = new FirefoxDriver();
-    groupHelper.wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
-    groupHelper.wd.get("http://localhost/addressbook/addressbook/");
-    login("admin", "secret");
+    wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
+    wd.get("http://localhost/addressbook/addressbook/");
+    groupHelper = new GroupHelper(wd);
+    navigationHelper = new NavigationHelper(wd);
+    sessionHelper = new SessionHelper(wd);
+    sessionHelper.login("admin", "secret");
   }
 
-  public void login(String username, String password) {
 
-      groupHelper.wd.findElement(By.name("user")).click();
-      groupHelper.wd.findElement(By.name("user")).clear();
-      groupHelper.wd.findElement(By.name("user")).sendKeys(username);
-      groupHelper.wd.findElement(By.id("LoginForm")).click();
-      groupHelper.wd.findElement(By.name("pass")).click();
-      groupHelper.wd.findElement(By.name("pass")).clear();
-      groupHelper.wd.findElement(By.name("pass")).sendKeys(password);
-      groupHelper.wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-  }
 
-  public void goToGroupPage() {
-      groupHelper.wd.findElement(By.linkText("groups")).click();
-  }
-
-  public void stop() {
-    groupHelper.wd.quit();
+  public void stop() { wd.quit();
   }
 
   public void selectdeletedgroup() {
-      groupHelper.wd.findElement(By.linkText("groups")).click();
+      wd.findElement(By.linkText("groups")).click();
   }
 
   public void newContactEnd() {
-      groupHelper.wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+      wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
   public void fillNewContactForm(ContactData contactData) {
-      groupHelper.wd.findElement(By.name("firstname")).click();
-      groupHelper.wd.findElement(By.name("firstname")).clear();
-      groupHelper.wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
-      groupHelper.wd.findElement(By.name("lastname")).click();
-      groupHelper.wd.findElement(By.name("lastname")).clear();
-      groupHelper.wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-      groupHelper.wd.findElement(By.name("mobile")).click();
-      groupHelper.wd.findElement(By.name("mobile")).clear();
-      groupHelper.wd.findElement(By.name("mobile")).sendKeys(contactData.getPhone());
-      groupHelper.wd.findElement(By.name("email")).click();
-      groupHelper.wd.findElement(By.name("email")).clear();
-      groupHelper.wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
+      wd.findElement(By.name("firstname")).click();
+     wd.findElement(By.name("firstname")).clear();
+      wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
+      wd.findElement(By.name("lastname")).click();
+     wd.findElement(By.name("lastname")).clear();
+      wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
+      wd.findElement(By.name("mobile")).click();
+      wd.findElement(By.name("mobile")).clear();
+     wd.findElement(By.name("mobile")).sendKeys(contactData.getPhone());
+      wd.findElement(By.name("email")).click();
+      wd.findElement(By.name("email")).clear();
+      wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
   }
 
   public void addNewContact() {
-      groupHelper.wd.findElement(By.linkText("add new")).click();
+      navigationHelper.wd.findElement(By.linkText("add new")).click();
   }
 
   public void deleteContact() {
-      groupHelper.wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+      wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
   }
 
   public void clickSelectedContactToDelete() {
-      if (!groupHelper.wd.findElement(By.id("6")).isSelected()) {
-          groupHelper.wd.findElement(By.id("6")).click();
+      if (!wd.findElement(By.id("6")).isSelected()) {
+          wd.findElement(By.id("6")).click();
       }
   }
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
+  }
+
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 }

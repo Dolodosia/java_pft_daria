@@ -10,7 +10,7 @@ public class GroupDeletionTests extends TestBase {
     @Test
     public void testGroupDeletion() {
 
-        app.goToGroupPage();
+        app.getNavigationHelper().goToGroupPage();
         //selectdeletedgroup();
 
         //tak powinno byc...?
