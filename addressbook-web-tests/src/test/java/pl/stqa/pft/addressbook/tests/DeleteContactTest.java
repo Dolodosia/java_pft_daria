@@ -7,16 +7,16 @@ public class DeleteContactTest extends TestBase {
     @Test
     public void testDeleteContact() {
 
-        app.clickSelectedContactToDelete();
+        //app.clickSelectedContactToDelete();
         //exp
         //selectContact();
 
-        app.deleteContact();
+        //app.deleteContact();
 
         //exp
         //deleteContact1();
 
-        wd.switchTo().alert().accept();
+        //wd.switchTo().alert().accept();
     }
 
 
