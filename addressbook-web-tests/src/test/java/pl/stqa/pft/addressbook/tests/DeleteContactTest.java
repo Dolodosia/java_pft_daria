@@ -15,6 +15,8 @@ public class DeleteContactTest extends TestBase {
 
         //exp
         //deleteContact1();
+
+        wd.switchTo().alert().accept();
     }
 
 
