@@ -12,7 +12,8 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private  NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
-  public ContactHelper getContactHelper;
+  public ContactHelper ContactHelper;
+  public pl.stqa.pft.addressbook.appmanager.ContactHelper contactHelper;
 
 
   public void init() {
@@ -24,6 +25,7 @@ public class ApplicationManager {
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
+    ContactHelper = new ContactHelper(wd);
   }
 
 

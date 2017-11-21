@@ -35,7 +35,7 @@ public class ContactHelper extends HelperBase {
   public void goToHomePage() {
 
     click(By.xpath("//div[@id='content']/form/input[21]"));
-      }  
+      }
 
 /*
   public void addNewContact() {
