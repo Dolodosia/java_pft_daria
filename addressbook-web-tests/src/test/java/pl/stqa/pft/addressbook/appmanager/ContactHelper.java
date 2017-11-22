@@ -6,7 +6,7 @@ import pl.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
 
-//konstruktor
+  //konstruktor
   public ContactHelper(FirefoxDriver wd) {
     super(wd);
   }
@@ -38,5 +38,22 @@ public class ContactHelper extends HelperBase {
   }
 
 
-
+  public void selectContact() {
+    click(By.id("3"));
   }
+
+  public void initContactModification() {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void submitContactModification() {
+    click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+  }
+
+  //exp
+public void contactUpdate() {
+    wd.findElement(By.name("update")).click();
+  }
+
+}
+

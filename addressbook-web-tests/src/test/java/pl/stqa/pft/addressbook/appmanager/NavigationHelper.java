@@ -14,6 +14,11 @@ public class NavigationHelper extends HelperBase {
     click(By.linkText("groups"));
   }
 
+  public void goToHomePage() {
+   click(By.xpath("//div[@id='content']/form/input[21]"));
+     }
+
+
   //exp new method
   public void goToCreatenewContact() {
     click(By.linkText("add new"));
