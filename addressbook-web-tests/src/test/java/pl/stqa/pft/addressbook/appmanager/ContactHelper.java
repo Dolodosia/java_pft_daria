@@ -55,5 +55,13 @@ public void contactUpdate() {
     wd.findElement(By.name("update")).click();
   }
 
-}
+  public void deleteContact() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
+
+  public void alertAccept() {
+    wd.switchTo().alert().accept();
+  }
+
+  }
 
