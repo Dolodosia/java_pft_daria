@@ -1,13 +1,17 @@
 package pl.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.BrowserType;
 import pl.stqa.pft.addressbook.model.ContactData;
 
 public class ApplicationManager {
 
-  FirefoxDriver wd;
+ WebDriver wd;
 
   private SessionHelper sessionHelper;
   private  NavigationHelper navigationHelper;
@@ -18,8 +22,19 @@ public class ApplicationManager {
 
 
   public void init() {
+
+    String browser = BrowserType.FIREFOX;
+    if(browser==BrowserType.FIREFOX){
+      wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
+    } else if (browser==BrowserType.CHROME){
+      wd = new ChromeDriver();
+    } else if (browser==BrowserType.IE){
+      wd = new InternetExplorerDriver();
+    }
+
+
     //wd = new FirefoxDriver();
-    wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
+
     wd.get("http://localhost/addressbook/addressbook/");
 
     groupHelper = new GroupHelper(wd);
