@@ -9,6 +9,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 import pl.stqa.pft.addressbook.model.ContactData;
 
+import java.util.concurrent.TimeUnit;
+
 public class ApplicationManager {
 
  WebDriver wd;
@@ -39,7 +41,7 @@ public ApplicationManager(String browser){
 
 
     //wd = new FirefoxDriver();
-
+//wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/addressbook/");
 
     groupHelper = new GroupHelper(wd);
