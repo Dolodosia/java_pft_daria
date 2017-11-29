@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import pl.stqa.pft.addressbook.model.ContactData;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+//import java.util.NoSuchElementException;
 
 public class ContactHelper extends HelperBase {
 
@@ -19,7 +22,18 @@ public class ContactHelper extends HelperBase {
   }
 
   //ok
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
+    type(By.name("firstname"), contactData.getFirstname());
+    type(By.name("lastname"), contactData.getLastname());
+    type(By.name("home"), contactData.getPhone());
+    type(By.name("email"), contactData.getEmail());
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
+  }
+    /*
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
     wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
@@ -33,7 +47,7 @@ public class ContactHelper extends HelperBase {
     wd.findElement(By.name("email")).clear();
     wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
   }
-
+*/
   //ok
   public void goToHomePage() {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
@@ -42,7 +56,8 @@ public class ContactHelper extends HelperBase {
 
 
   public void selectContact() {
-    click(By.id("49"));
+    //click(By.id("49"));
+    click(By.name("selected[]"));
   }
 
   public void initContactModification() {
