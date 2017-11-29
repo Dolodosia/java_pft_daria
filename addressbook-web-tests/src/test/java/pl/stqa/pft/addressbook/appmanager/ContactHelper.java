@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import pl.stqa.pft.addressbook.model.ContactData;
+import org.openqa.selenium.NoSuchElementException;
 
 public class ContactHelper extends HelperBase {
 
@@ -39,8 +40,9 @@ public class ContactHelper extends HelperBase {
   }
 
 
+
   public void selectContact() {
-    click(By.id("3"));
+    click(By.id("49"));
   }
 
   public void initContactModification() {
