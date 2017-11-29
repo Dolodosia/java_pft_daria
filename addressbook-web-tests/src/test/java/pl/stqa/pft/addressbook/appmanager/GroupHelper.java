@@ -36,12 +36,12 @@ public class GroupHelper extends HelperBase {
 
   //wersja exp
   public void selectGroup() {
-    //if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
-      //click(By.xpath("//div[@id='content']/form/span[2]/input"));
-click(By.name("selected[]"));
+    if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
+      click(By.xpath("//div[@id='content']/form/span[2]/input"));
+
 
     }
-
+  }
 
   public void initGroupModification() {
     click(By.name("edit"));
@@ -49,16 +49,5 @@ click(By.name("selected[]"));
 
   public void submitGroupModifications() {
     click(By.name("update"));
-  }
-
-  public void createGroup(GroupData group) {
-    initGroupCreation();
-    fillGroupForm(new GroupData("Firefox", "test 1", "test 2"));
-    submitGroupCreation();
-    returnToGroupPage();
-  }
-
-  public boolean isThereAGroup() {
-    return isElementPresent(By.name("selected[]"));
   }
 }
