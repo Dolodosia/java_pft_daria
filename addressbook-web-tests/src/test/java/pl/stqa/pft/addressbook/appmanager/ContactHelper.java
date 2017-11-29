@@ -50,7 +50,8 @@ public class ContactHelper extends HelperBase {
 */
   //ok
   public void goToHomePage() {
-    wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    //wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
 
