@@ -16,7 +16,17 @@ public class HelperBase {
     wd.findElement(locator).click();
   }
 
+//nowa wewrsja
+protected void type(By locator, String text) {
+  click(locator);
+  if (text != null) {
+    wd.findElement(locator).clear();
+    wd.findElement(locator).sendKeys(text);
+  }
+}
 
+
+  /* moja wersja
   protected void type(By locator, String text) {
     click(locator);
     if (text != null) {
@@ -28,6 +38,8 @@ public class HelperBase {
 
     }
   }
+*/
+
 
   public boolean isAlertPresent() {
     try {
