@@ -35,13 +35,11 @@ public class GroupHelper extends HelperBase {
   }
 
   //wersja exp
-  public void selectGroup() {
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
-      click(By.xpath("//div[@id='content']/form/span[2]/input"));
-
+  public void selectGroup(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
 
     }
-  }
+
 
   public void initGroupModification() {
     click(By.name("edit"));
