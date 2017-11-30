@@ -15,7 +15,7 @@ public class Collections {
 for(String l: langs){
   System.out.println("chce nauczyc sie " + l);
 }
-    
+
 
   }
 }

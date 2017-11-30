@@ -9,6 +9,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 import pl.stqa.pft.addressbook.model.ContactData;
 
+import java.util.concurrent.TimeUnit;
+
 public class ApplicationManager {
 
  WebDriver wd;
@@ -27,8 +29,6 @@ public ApplicationManager(String browser){
 }
 
   public void init() {
-
-
     if(browser.equals(BrowserType.FIREFOX)){
       wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
     } else if (browser.equals(BrowserType.CHROME)){
@@ -37,10 +37,9 @@ public ApplicationManager(String browser){
       wd = new InternetExplorerDriver();
     }
 
-
     //wd = new FirefoxDriver();
-
-    wd.get("http://localhost/addressbook/addressbook/");
+    //wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    wd.get("http://localhost/addressbook/addressbook");
 
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);

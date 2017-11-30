@@ -50,4 +50,8 @@ public class GroupHelper extends HelperBase {
   public void submitGroupModifications() {
     click(By.name("update"));
   }
+
+  public int getGroupCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
 }
