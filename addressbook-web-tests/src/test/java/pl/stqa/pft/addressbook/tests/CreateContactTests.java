@@ -19,7 +19,7 @@ public class CreateContactTests extends TestBase {
 
       app.getContactHelper().goToContactCreation();
 
-      ContactData contact = new ContactData("jan", "tester", "666555222", "gmail@email.pl","test2");
+      ContactData contact = new ContactData("jan", "tester", "666555222", "gmail@email.pl","test1");
 
       app.getContactHelper().fillContactForm(contact, true);
       app.getContactHelper().goToHomePage();
