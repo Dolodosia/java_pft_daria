@@ -65,9 +65,7 @@ public class ContactData {
          if (this == o) return true;
          if (o == null || getClass() != o.getClass()) return false;
 
-
          ContactData that = (ContactData) o;
-
 
          if (id != that.id) return false;
          if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;

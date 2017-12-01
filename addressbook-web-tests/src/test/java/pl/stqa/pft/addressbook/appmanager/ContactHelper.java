@@ -76,7 +76,7 @@ public void type(By locator, String text) {
   //ok
   public void selectContact(int index) {
    //wd.findElements(By.name("selected[]")).get(index).click();
-    index += 2;
+    index += 54;
     click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[1]/input"));
 
   }
@@ -84,7 +84,7 @@ public void type(By locator, String text) {
 //ok
   public void initContactModification(int index) {
     //wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr["+index+"]/td[8]/a/img")).click();
-    index += 2;
+    index += 54;
     click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[8]/a/img"));
 
   }
@@ -94,6 +94,9 @@ public void type(By locator, String text) {
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
+
+
+
 
   //exp
   public void contactUpdate() {

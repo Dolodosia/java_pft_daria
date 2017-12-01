@@ -9,32 +9,29 @@ import java.util.Comparator;
 import java.util.List;
 
 public class CreateContactTests extends TestBase {
-    
-    @Test
-    public void testCreateContact() {
 
-      //lista OK...?
-        //int before = app.getContactHelper().getContactCount();
-      List<ContactData> before = app.getContactHelper().getContactList();
+  @Test
+  public void testCreateContact() {
 
-      app.getContactHelper().goToContactCreation();
 
-      ContactData contact = new ContactData("jan", "tester", "666555222", "gmail@email.pl","test1");
+    List<ContactData> before = app.getContactHelper().getContactList();
+    app.getContactHelper().goToContactCreation();
+    ContactData contact = new ContactData( "ggggg", "kkkkk","777888999", "ggg@test.pl","test2");
+    app.getContactHelper().fillContactForm(contact, true);
+    app.getContactHelper().goToHomePage();
 
-      app.getContactHelper().fillContactForm(contact, true);
-      app.getContactHelper().goToHomePage();
+    List<ContactData> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size() + 1);
 
-      List<ContactData> after = app.getContactHelper().getContactList();
-      Assert.assertEquals(after.size(), before.size() + 1);
 
-      contact.setId(after.stream().max((t1, t2) -> Integer.compare(t1.getId(), t2.getId())).get().getId());
-      before.add(contact);
-      Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-      before.sort(byId);
-      after.sort(byId);
-      Assert.assertEquals(before, after);
-
-    }
+    contact.setId(after.stream().max((t1, t2) -> Integer.compare(t1.getId(), t2.getId())).get().getId());
+    before.add(contact);
+    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+     before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
+Assert.assertEquals(new HashSet<Object>(before) , new HashSet<Object>(after));
+  }
 
 
 }
