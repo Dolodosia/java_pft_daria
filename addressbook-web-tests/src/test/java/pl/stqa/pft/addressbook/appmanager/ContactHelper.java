@@ -76,7 +76,7 @@ public void type(By locator, String text) {
   //ok
   public void selectContact(int index) {
    //wd.findElements(By.name("selected[]")).get(index).click();
-    index += 54;
+    index += 2;
     click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[1]/input"));
 
   }
@@ -84,7 +84,7 @@ public void type(By locator, String text) {
 //ok
   public void initContactModification(int index) {
     //wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr["+index+"]/td[8]/a/img")).click();
-    index += 54;
+    index += 2;
     click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[8]/a/img"));
 
   }
@@ -122,19 +122,20 @@ public void type(By locator, String text) {
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
-    for (WebElement element : elements) {
-      String name = element.getText();
+           for (WebElement element: elements) {
+             /*String name = element.getText();*/
+             List<WebElement> cells = element.findElements(By.tagName("td"));
 
-      int id = Integer.parseInt(element.findElements(By.tagName("td")).get(0).findElement(By.tagName("input")).getAttribute("id"));
+             int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
+             String lastname = cells.get(1).getText();
+             String firstname = cells.get(2).getText();
 
-
-      ContactData contact = new ContactData(id, "jan", "tester", null, null, null);
-      contacts.add(contact);
-    }
+             ContactData contact = new ContactData(id, firstname, lastname, null, null, null);
+             contacts.add(contact);
+           }
 
     return contacts;
   }
-
 
 }
 
