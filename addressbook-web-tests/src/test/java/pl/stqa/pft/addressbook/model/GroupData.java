@@ -42,8 +42,6 @@ public class GroupData {
     return id;
   }
 
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -61,7 +59,6 @@ public class GroupData {
     result = 31 * result + (name != null ? name.hashCode() : 0);
     return result;
   }
-
 
   public String getName() {
     return name;
