@@ -8,7 +8,7 @@ package pl.stqa.pft.addressbook.tests;
 
 public class DeleteContactTest extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   public void testDeleteContact() {
 
 
