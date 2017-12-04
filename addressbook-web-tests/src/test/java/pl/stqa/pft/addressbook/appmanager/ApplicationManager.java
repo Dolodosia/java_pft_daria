@@ -54,11 +54,11 @@ public ApplicationManager(String browser){
       wd.findElement(By.linkText("groups")).click();
   }
 
-  public GroupHelper getGroupHelper() {
+  public GroupHelper group() {
     return groupHelper;
   }
 
-  public NavigationHelper getNavigationHelper() {
+  public NavigationHelper goTo() {
     return navigationHelper;
   }
 
