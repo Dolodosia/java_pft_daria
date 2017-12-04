@@ -31,7 +31,6 @@ protected void type(By locator, String text) {
 }
 
 
-
   protected boolean isElementPresent(By locator) {
     try {
       wd.findElement(locator);

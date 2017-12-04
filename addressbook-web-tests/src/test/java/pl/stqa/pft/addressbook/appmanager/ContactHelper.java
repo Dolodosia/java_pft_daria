@@ -39,6 +39,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("home"), contactData.getPhone());
     type(By.name("email"), contactData.getEmail());
+    type(By.name("address"), contactData.getAddress());
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
@@ -74,29 +75,22 @@ public void type(By locator, String text) {
 
 
   //ok
-  public void selectContact() {
-   //wd.findElements(By.name("selected[]")).get(index).click();
-    //index += 2;
-    //click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[1]/input"));
-    click(By.name("selected[]"));
-
+  public void selectContact(int index) {
+    index += 2;
+    click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[1]/input"));
+    // click(By.name("selected[]"));
   }
 
 //ok
-  public void initContactModification() {
-    //wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr["+index+"]/td[8]/a/img")).click();
-    //index += 2;
-    //click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[8]/a/img"));
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void initContactModification(int index) {
+    index += 2;
+    click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[8]/a/img"));
   }
-
 
 //ok
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
-
-
 
 
   //exp
@@ -119,23 +113,30 @@ public void type(By locator, String text) {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-//ok...???? konstruktor spr
+
+  //exp
   public List<ContactData> getContactList() {
+
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
-           for (WebElement element: elements) {
-             /*String name = element.getText();*/
-             List<WebElement> cells = element.findElements(By.tagName("td"));
 
-             int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
-             String lastname = cells.get(1).getText();
-             String firstname = cells.get(2).getText();
+    for (WebElement element: elements) {
 
-             ContactData contact = new ContactData(id, firstname, lastname, null, null, null);
-             contacts.add(contact);
-           }
+      List<WebElement> cells = element.findElements(By.tagName("td"));
+
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
+
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+
+      ContactData contact = new ContactData(id, firstname, lastname, null, null, null, null);
+
+      contacts.add(contact);
+
+    }
 
     return contacts;
+
   }
 
 }

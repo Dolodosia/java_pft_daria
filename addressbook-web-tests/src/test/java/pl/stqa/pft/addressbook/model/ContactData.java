@@ -9,25 +9,28 @@ public class ContactData {
   private String phone;
   private String email;
   private String group;
+  private String address;
 
   //ok
-  public ContactData(String firstname, String lastname, String phone, String email, String group) {
+  public ContactData(String firstname, String lastname, String phone, String email, String group, String address) {
     this.id = Integer.MAX_VALUE;
     this.firstname = firstname;
     this.lastname = lastname;
     this.phone = phone;
     this.email = email;
     this.group = group;
+    this.address= address;
   }
 
   //ok
-  public ContactData(int id, String firstname, String lastname, String phone, String email, String group) {
+  public ContactData(int id, String firstname, String lastname, String phone, String email, String group, String address) {
     this.id = id;
     this.firstname = firstname;
     this.lastname = lastname;
     this.phone = phone;
     this.email = email;
     this.group = group;
+    this.address = address;
   }
 
   //ok
@@ -57,6 +60,10 @@ public class ContactData {
 
   public String getGroup() {
     return group;
+  }
+
+  public String getAddress() {
+    return address;
   }
 
 

@@ -20,11 +20,8 @@ public class ApplicationManager {
   private GroupHelper groupHelper;
   private ContactHelper contactHelper;
   private String browser;
-  //public ContactHelper contactHelperontactHelper;
-  //public pl.stqa.pft.addressbook.appmanager.ContactHelper contactHelper;
 
 public ApplicationManager(String browser){
-
   this.browser = browser;
 }
 
@@ -39,7 +36,9 @@ public ApplicationManager(String browser){
 
     //wd = new FirefoxDriver();
     //wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/addressbook");
+    //wd.get("http://localhost/addressbook/addressbook");
 
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
@@ -48,16 +47,12 @@ public ApplicationManager(String browser){
     contactHelper = new ContactHelper(wd);
   }
 
-
-
   public void stop() { wd.quit();
   }
 
   public void selectdeletedgroup() {
       wd.findElement(By.linkText("groups")).click();
   }
-
-
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
