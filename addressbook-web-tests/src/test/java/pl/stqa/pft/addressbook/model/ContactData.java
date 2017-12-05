@@ -99,7 +99,7 @@ public class ContactData {
    return mobile;
   }
 
-   public String getwork() {
+   public String getWork() {
      return work;
      }
 

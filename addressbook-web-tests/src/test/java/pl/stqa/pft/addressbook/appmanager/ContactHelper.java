@@ -13,7 +13,9 @@ import pl.stqa.pft.addressbook.model.GroupData;
 import pl.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 //import java.util.NoSuchElementException;
 
 public class ContactHelper extends HelperBase {
@@ -172,6 +174,21 @@ public void type(By locator, String text) {
   }
 */
 
+  //brakujaca metoda z lekcji m5 f 10...? ma byc zamiast allContacts...?
+  public Set<ContactData> all(){
+    Set<ContactData>contacts = new HashSet<ContactData>();
+    List<WebElement> rows = wd.findElements((By.name("entry")));
+    for (WebElement row : rows){
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+
+      String[] phones = cells.get(5).getText().split("\n");
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withPhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
+    }
+    return contacts;
+  }
 
   private Contacts contactCache = null;
 
