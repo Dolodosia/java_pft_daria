@@ -8,6 +8,8 @@ import pl.stqa.pft.addressbook.model.ContactData;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import pl.stqa.pft.addressbook.model.Contacts;
+import pl.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,13 +56,20 @@ public void type(By locator, String text) {
   wd.findElement(locator).sendKeys(text);
 }
 
-
 //ok
   public void createContact(ContactData contact, boolean creation) {
     goToContactCreation();
     fillContactForm(contact, true);
     goToHomePage();
   }
+
+//exp ???
+  public void create(ContactData contact, boolean creation) {
+    goToContactCreation();
+    fillContactForm(contact, true);
+    goToHomePage();
+  }
+
 
   //ok
   public boolean isThereAContact() {
@@ -73,12 +82,15 @@ public void type(By locator, String text) {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-
   //ok
   public void selectContact(int index) {
     index += 2;
     click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[1]/input"));
     // click(By.name("selected[]"));
+  }
+
+  private void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
   }
 
 //ok
@@ -87,11 +99,24 @@ public void type(By locator, String text) {
     click(By.xpath("html/body/div/div[4]/form[2]/table/tbody/tr[" + index + "]/td[8]/a/img"));
   }
 
+  public void initContactModification() {
+   click(By.name("update"));
+   }
+
+  public void selectContactToEditById(int id) {
+    wd.findElement(By.xpath("//input[@id='"+ id + "']/../..//img[@title='Edit']")).click();
+  }
+
+  public void modify(ContactData contact) {
+    selectContactToEditById(contact.getId());
+    fillContactForm(contact, false);
+    submitContactModification();
+  }
+
 //ok
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
-
 
   //exp
   public void contactUpdate() {
@@ -101,6 +126,18 @@ public void type(By locator, String text) {
   //ok
   public void deleteContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
+
+  public void delete(int index) {
+    selectContact(index);
+    deleteContact();
+    alertAccept();
+  }
+
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    deleteContact();
+    alertAccept();
   }
 
   //ok
@@ -113,31 +150,36 @@ public void type(By locator, String text) {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-
-  //exp
+  /*
   public List<ContactData> getContactList() {
-
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
-
     for (WebElement element: elements) {
-
       List<WebElement> cells = element.findElements(By.tagName("td"));
-
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
-
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
-
       ContactData contact = new ContactData(id, firstname, lastname, null, null, null, null);
-
       contacts.add(contact);
-
     }
-
     return contacts;
-
   }
+*/
+  //new version
+  public Contacts allContacts() {
+     Contacts contacts = new Contacts();
+       List<WebElement> elements = wd.findElements(By.name("entry"));
+    for (WebElement element: elements) {
+       List<WebElement> cells = element.findElements(By.tagName("td"));
+             int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
+             String lastname = cells.get(1).getText();
+             String firstname = cells.get(2).getText();
+
+             contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+           }
+         return contacts;
+       }
+
 
 }
 
