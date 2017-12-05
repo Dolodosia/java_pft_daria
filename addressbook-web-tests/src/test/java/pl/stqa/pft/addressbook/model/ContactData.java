@@ -8,6 +8,8 @@ public class ContactData {
   private String firstname;
   private String lastname;
   private String phone;
+  private String mobile;
+ private String work;
   private String email;
   private String group;
   private String address;
@@ -40,6 +42,15 @@ public class ContactData {
     this.phone = phone;
     return this;
   }
+
+  public ContactData withMobilePhone(String mobile) {
+   this.mobile = mobile;
+ return this;
+  }
+  public ContactData withWorkPhone(String work) {
+     this.work = work;
+  return this;
+    }
 
   public ContactData withEmail(String email) {
     this.email = email;
@@ -83,6 +94,16 @@ public class ContactData {
   public String getAddress() {
     return address;
   }
+
+  public String getMobile() {
+   return mobile;
+  }
+
+   public String getwork() {
+     return work;
+     }
+
+
 
 
   @Override
