@@ -42,7 +42,7 @@ public class ContactHelper extends HelperBase {
   public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
-    type(By.name("home"), contactData.getPhone());
+    type(By.name("home"), contactData.getHomePhone());
     type(By.name("email"), contactData.getEmail());
     type(By.name("address"), contactData.getAddress());
     if (creation) {
@@ -83,6 +83,7 @@ public void type(By locator, String text) {
   //ok
   public void goToHomePage() {
     //wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    //click(By.xpath("//div[@id='content']/form/input[21]"));
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
@@ -174,22 +175,23 @@ public void type(By locator, String text) {
   }
 */
 
+  /*
   //brakujaca metoda z lekcji m5 f 10...? ma byc zamiast allContacts...?
   public Set<ContactData> all(){
     Set<ContactData>contacts = new HashSet<ContactData>();
     List<WebElement> rows = wd.findElements((By.name("entry")));
     for (WebElement row : rows){
       List<WebElement> cells = row.findElements(By.tagName("td"));
+      //int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
-
-      String[] phones = cells.get(5).getText().split("\n");
-      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withPhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
+      String allPhones = cells.get(5).getText();
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withAllPhones(allPhones));
     }
     return contacts;
   }
-
+*/
   private Contacts contactCache = null;
 
   //new version
@@ -197,6 +199,7 @@ public void type(By locator, String text) {
     if (contactCache !=null){
       return new Contacts(contactCache);
     }
+
     contactCache = new Contacts();
        List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element: elements) {
@@ -204,8 +207,8 @@ public void type(By locator, String text) {
              int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
              String lastname = cells.get(1).getText();
              String firstname = cells.get(2).getText();
-
-      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+      String allPhones = cells.get(5).getText();
+      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withAllPhones(allPhones));
            }
          return new Contacts(contactCache);
        }
@@ -218,7 +221,7 @@ public void type(By locator, String text) {
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withPhone(phone).withMobilePhone(mobile).withWorkPhone(work);
+    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
   }
 
   private void initContactModificationById (int id) {
