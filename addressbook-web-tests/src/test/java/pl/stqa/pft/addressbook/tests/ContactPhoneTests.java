@@ -12,33 +12,29 @@ import static org.hamcrest.MatcherAssert.*;
 
 public class ContactPhoneTests extends TestBase {
 
-
-  //dodac zapewnienie warunkow gdyby nie bylo zadnego kontaktu
-
   @Test
-  public void testContactPhones() {
-    app.goTo().goToHomePage();
-    ContactData contact = app.contact().allContacts().iterator().next();
-    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+     public void testContactPhones() {
+             app.goTo().goToHomePage();
+             ContactData contact = app.contact().allContacts().iterator().next();
+             ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+             assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
 
-    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
-
-  }
-
-  private String mergePhones(ContactData contact) {
-    return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
-            .stream().filter((s) -> !s.equals(""))
-            .map(ContactPhoneTests::cleaned)
-            .collect(Collectors.joining("\n"));
-
-  }
+         }
 
 
-  //regular expression
+             private String mergePhones(ContactData contact) {
+         return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
+                 .stream().filter((s) -> !s.equals(""))
+                 .map(ContactPhoneTests::cleaned)
+                 .collect(Collectors.joining("\n"));
+                 }
 
-  public static String cleaned(String phone) {
-    return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
-  }
+
+             public static String cleaned(String phone) {
+             return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
+
+         }
+
 
 
 }

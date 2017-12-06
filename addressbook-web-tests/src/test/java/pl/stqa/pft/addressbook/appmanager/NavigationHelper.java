@@ -22,7 +22,8 @@ public class NavigationHelper extends HelperBase {
   }
 
   public void goToHomePage() {
-   click(By.xpath("//div[@id='content']/form/input[21]"));
+   //click(By.xpath("//div[@id='content']/form/input[21]"));
+    wd.findElement(By.linkText("home")).click();
      }
 
 
