@@ -84,7 +84,7 @@ public class ContactData {
   }
 
   public ContactData withEmail3(String email3) {
-    this.email2 = email3;
+    this.email3 = email3;
     return this;
   }
 
