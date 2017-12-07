@@ -247,6 +247,20 @@ public void type(By locator, String text) {
 
   }
 
+  public ContactData infoFromDetailsForm(ContactData contact) {
+    initContactDetailsById(contact.getId());
+    String allDetails = wd.findElement(By.xpath("//div[@id='content']")).getText();
+    wd.navigate().back();
+    return new ContactData().withAllDetails(allDetails);
+  }
+
+  private void initContactDetailsById(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
+  }
+
+
+
+
 }
 
 
