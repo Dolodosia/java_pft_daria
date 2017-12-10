@@ -73,6 +73,8 @@ public class ContactDataGenerator {
     writer.close();
   }
 
+
+
   private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
     Writer writer = new FileWriter(file);
@@ -82,13 +84,28 @@ public class ContactDataGenerator {
     writer.close();
   }
 
+
   private List<ContactData> generateContacts(int count) {
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i = 0; i < count; i++) {
       contacts.add(new ContactData().withFirstname(String.format("firstname %s", i)).withLastname(String.format("lastname %s", i))
-              .withHomePhone(String.format("phone %s", i)));
+              .withHomePhone(String.format("phone %s", i)).withAddress(String.format("address %s", i)).withEmail(String.format("email %s", i)));
     }
     return contacts;
   }
+
+  /*
+  private List<ContactData> generateContacts(int count) {
+72         List<ContactData> contacts = new ArrayList<ContactData>();
+73         for (int i = 0; i < count; i++) {
+74             contacts.add(new ContactData().withFirstname(String.format("fistname %s", i)).withLastname(String.format("lastname %s", i))
+75                     .withAddress(String.format("address %s", i)).withTelephonehome(String.format("telephonehome %s", i))
+76                     .withEmail(String.format("email %s", i)).withGroup(String.format("test %s", i))
+77                     .withPhoto(new File("src/test/resources/scrum.jpg")));
+78         }
+79         return contacts;
+80     }
+
+   */
 
 }
