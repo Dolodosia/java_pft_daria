@@ -24,7 +24,7 @@ public class ContactData {
   private String email2;
   @XStreamOmitField
   private String email3;
-  @XStreamOmitField
+
   private String group;
 
   //@Expose
