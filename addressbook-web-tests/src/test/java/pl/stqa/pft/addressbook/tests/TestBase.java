@@ -1,16 +1,25 @@
 package pl.stqa.pft.addressbook.tests;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import pl.stqa.pft.addressbook.appmanager.ApplicationManager;
 import org.openqa.selenium.remote.BrowserType;
 
+import java.lang.reflect.Method;
+import java.util.Arrays;
+
 
 public class TestBase {
 
+  Logger logger = LoggerFactory.getLogger(TestBase.class);
+
   protected static final ApplicationManager app
-          = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
+          = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
 
           //=new ApplicationManager(BrowserType.FIREFOX);
 
@@ -20,23 +29,21 @@ public class TestBase {
 
   }
 
-  @AfterSuite
+  @AfterSuite (alwaysRun = true)
   public void tearDown() {
     app.stop();
   }
 
 
-  /*exp
-  public void selectContact() {
-    wd.click(By.id("6"));
-     }
-     */
 
-     /*exp
-     public void deleteContact1() {
-      wd.click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
-        }
-        */
+@BeforeMethod
+  public void logTestStart(Method m, Object[] p){
+  logger.info("start test" + m.getName() + " with parameters " + Arrays.asList(p));
+}
 
+@AfterMethod (alwaysRun = true)
+public void logTestStop(Method m){
+  logger.info("stop test" + m.getName());
+}
 
 }

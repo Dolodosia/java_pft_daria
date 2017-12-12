@@ -1,0 +1,6 @@
+08:18:02.106 [main] INFO  p.s.pft.addressbook.tests.TestBase - start testtestGroupCreation with parameters [GroupData{id='2147483647', name='test 0'}]
+08:18:07.439 [main] INFO  p.s.pft.addressbook.tests.TestBase - stop testtestGroupCreation
+08:18:07.439 [main] INFO  p.s.pft.addressbook.tests.TestBase - start testtestGroupCreation with parameters [GroupData{id='2147483647', name='test 1'}]
+08:18:10.367 [main] INFO  p.s.pft.addressbook.tests.TestBase - stop testtestGroupCreation
+08:18:10.368 [main] INFO  p.s.pft.addressbook.tests.TestBase - start testtestGroupCreation with parameters [GroupData{id='2147483647', name='test 2'}]
+08:18:13.660 [main] INFO  p.s.pft.addressbook.tests.TestBase - stop testtestGroupCreation
