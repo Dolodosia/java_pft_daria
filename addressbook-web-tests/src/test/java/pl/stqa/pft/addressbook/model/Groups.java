@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+//zad 17
 public class Groups extends ForwardingSet<GroupData> {
 
   private Set<GroupData> delegate;

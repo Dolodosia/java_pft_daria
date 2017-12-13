@@ -10,6 +10,7 @@ package pl.stqa.pft.addressbook.tests;
         import static org.hamcrest.CoreMatchers.*;
         import static org.hamcrest.MatcherAssert.*;
 
+        //zad 17
 public class DeleteContactTest extends TestBase {
 
   @BeforeMethod

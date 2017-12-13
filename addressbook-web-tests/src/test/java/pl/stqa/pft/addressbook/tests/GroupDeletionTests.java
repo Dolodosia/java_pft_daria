@@ -16,6 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.testng.Assert.assertEquals;
 
+//zad 17
 public class GroupDeletionTests extends TestBase {
 
   @BeforeMethod

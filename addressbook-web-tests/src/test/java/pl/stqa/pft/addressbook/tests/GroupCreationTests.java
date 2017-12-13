@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+//zad 17
 public class GroupCreationTests extends TestBase {
 
 

@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//zad 17
 @XStreamAlias("group")
 @Entity
 @Table(name = "group_list")

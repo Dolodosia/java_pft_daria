@@ -16,6 +16,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.*;
 import static org.testng.Assert.assertEquals;
 
+//zad 17
 public class GroupModificationTests extends TestBase {
 
   @BeforeMethod

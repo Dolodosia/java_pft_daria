@@ -11,7 +11,7 @@ import pl.stqa.pft.addressbook.model.GroupData;
 import pl.stqa.pft.addressbook.model.Groups;
 import java.util.List;
 
-
+//zad 17
 public class DbHelper {
 
   private final SessionFactory sessionFactory;

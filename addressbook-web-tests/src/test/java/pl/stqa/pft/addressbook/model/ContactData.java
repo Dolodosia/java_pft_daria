@@ -8,6 +8,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.io.File;
 
+//zad 17
 @Entity
 @Table(name = "addressbook")
 @XStreamAlias("contacts")

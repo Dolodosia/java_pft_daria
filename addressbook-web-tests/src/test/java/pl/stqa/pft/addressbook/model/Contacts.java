@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+//zad 17
 public class Contacts extends ForwardingSet<ContactData> {
 
   private Set<ContactData> delegate;
