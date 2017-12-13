@@ -21,7 +21,7 @@ public class ContactData {
   @Column(name = "firstname")
   private String firstname;
 
- @Column(name = "lastname")
+  @Column(name = "lastname")
   private String lastname;
 
   @Column(name = "email")
@@ -71,14 +71,13 @@ public class ContactData {
 
 
   public File getPhoto() {
-    return new File (photo);
+    return new File(photo);
   }
 
   public ContactData withPhoto(File photo) {
     this.photo = photo.getPath();
     return this;
   }
-
 
 
   public String getAllPhones() {
@@ -99,10 +98,10 @@ public class ContactData {
     return this;
   }
 
-    public ContactData withId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
-  return this;
-      }
+    return this;
+  }
 
   public ContactData withFirstname(String firstname) {
     this.firstname = firstname;
@@ -125,13 +124,14 @@ public class ContactData {
   }
 
   public ContactData withMobilePhone(String mobilePhone) {
-   this.mobilePhone = mobilePhone;
- return this;
+    this.mobilePhone = mobilePhone;
+    return this;
   }
+
   public ContactData withWorkPhone(String workPhone) {
-     this.workPhone = workPhone;
-  return this;
-    }
+    this.workPhone = workPhone;
+    return this;
+  }
 
   public ContactData withEmail(String email) {
     this.email = email;
@@ -148,7 +148,7 @@ public class ContactData {
     return this;
   }
 
-    public ContactData withGroup(String group) {
+  public ContactData withGroup(String group) {
     this.group = group;
     return this;
   }
@@ -160,7 +160,9 @@ public class ContactData {
 
 
   //ok
-  public int getId() { return id; }
+  public int getId() {
+    return id;
+  }
 
   //ok
   public void setId(int id) {
@@ -184,9 +186,13 @@ public class ContactData {
     return email;
   }
 
-  public String getEmail2() { return email2;  }
+  public String getEmail2() {
+    return email2;
+  }
 
-  public String getEmail3() { return email3;  }
+  public String getEmail3() {
+    return email3;
+  }
 
   public String getGroup() {
     return group;
@@ -197,37 +203,15 @@ public class ContactData {
   }
 
   public String getMobilePhone() {
-   return mobilePhone;
+    return mobilePhone;
   }
 
-   public String getWorkPhone() {
-     return workPhone;
-     }
+  public String getWorkPhone() {
+    return workPhone;
+  }
 
   public String getAllDetails() {
     return allDetails;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactData that = (ContactData) o;
-
-    if (id != that.id) return false;
-    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
-  }
-
-
-  @Override
-  public int hashCode() {
-    int result = id;
-    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
-    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-    return result;
   }
 
 
@@ -240,7 +224,30 @@ public class ContactData {
             '}';
   }
 
+  @Override
+public boolean equals(Object o) {
+    if (this == o) return true;
+         if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+         if (id != that.id) return false;
+         if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
+         return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+       }
 
 
+          @Override
+   public int hashCode() {
+         int result = id;
+         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+         return result;
+       }
 
 }
+
+
+
+
+
